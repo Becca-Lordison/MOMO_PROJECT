@@ -130,13 +130,28 @@ while (true)
     string momo_pin;
     int amount;
     string num;
+    string renum;
     cout << "Enter a Valid Mobile number: ";
     cin >> num;
+    cout<<"Re-enter recipient's phone number: ";
+    cin>>renum;
+    if (renum != num)
+    {
+        cout << "Numbers does not match." << endl;
+        cout << "Try Again." << endl;
+        continue;
+    }
+
     // Ensure the phone number has ten digits and contains only digits
     while (num.length() != 10 || !std::all_of(num.begin(), num.end(), [](char c){ return std::isdigit(c); }))
     {
         cout << "Invalid phone number. Please enter a 10-digit number: ";
         cin >> num;
+    }
+    while (renum.length() != 10 || !std::all_of(renum.begin(), renum.end(), [](char c){ return std::isdigit(c); }))
+    {
+        cout << "Invalid phone number. Please enter a 10-digit number: ";
+        cin >> renum;
     }
     cout << "Enter the amount to send: ";
     cin >> amount;
