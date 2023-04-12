@@ -47,30 +47,11 @@ int main()
     }
 
     // Display menu
-    while (true) // Main program loop
-    {
-        int choice;
-        cout << "Welcome to the Mobile Banking System" << endl;
-        cout << "1. Reset/Change Pin" << endl;
-        cout << "2. Check Balance" << endl;
-        cout << "3. Send Money" << endl;
-        cout << "4. Exit" << endl;
-        cout << "Enter your choice: ";
-        cin >> choice;
-
-        if (cin.fail()) // Check if the input is a number
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input. Please enter a number." << endl;
-            continue;
-        }
-
-        choice = 0;
+   int choice = 0;
 
 while (true)
 {
-    cout << "Welcome to our ATM. Please select an option:" << endl;
+    cout << "Welcome to Mobile Banking System. Please select an option:" << endl;
     cout << "1. Change PIN" << endl;
     cout << "2. Check balance" << endl;
     cout << "3. Send Money" << endl;
@@ -130,8 +111,8 @@ while (true)
     {
         string momo_pin;
         int amount;
-        int num;
-        cout << "Enter Mobile number: ";
+        string num;
+        cout << "Enter a Valid Mobile number: ";
         cin >> num;
         cout<<"Enter the amount to send: ";
         cin >> amount;
@@ -173,7 +154,6 @@ while (true)
     }
 }
 
-    }
 
     return 0;
 }
