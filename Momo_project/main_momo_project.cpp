@@ -105,6 +105,22 @@ while (true)
     }
     else if (choice == 2)
     {
+        string balance_pin;
+        cout<<"enter your momo pin: "<<endl;
+        cin>>balance_pin;
+        if (cin.fail()) // Check if the input is a number
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a number." << endl;
+            continue;
+        }
+        if (balance_pin != pin)
+        {
+            cout << "Invalid MoMo PIN. Please try again." << endl;
+            continue;
+        }
+
         cout << "Your balance is: " << balance << endl;
     }
     else if (choice == 3)
@@ -156,4 +172,5 @@ while (true)
 
 
     return 0;
+}
 }
