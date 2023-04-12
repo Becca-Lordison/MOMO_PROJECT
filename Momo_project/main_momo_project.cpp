@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <algorithm>
 
 using namespace std;
 
@@ -51,7 +52,8 @@ int main()
 
 while (true)
 {
-    cout << "Welcome to Mobile Banking System. Please select an option:" << endl;
+    cout << "Welcome to Mobile Banking System. "<<endl;
+    cout<<"Please select an option:" << endl;
     cout << "1. Change PIN" << endl;
     cout << "2. Check balance" << endl;
     cout << "3. Send Money" << endl;
@@ -123,42 +125,50 @@ while (true)
 
         cout << "Your balance is: " << balance << endl;
     }
-    else if (choice == 3)
+   else if (choice == 3)
+{
+    string momo_pin;
+    int amount;
+    string num;
+    cout << "Enter a Valid Mobile number: ";
+    cin >> num;
+    // Ensure the phone number has ten digits and contains only digits
+    while (num.length() != 10 || !std::all_of(num.begin(), num.end(), [](char c){ return std::isdigit(c); }))
     {
-        string momo_pin;
-        int amount;
-        string num;
-        cout << "Enter a Valid Mobile number: ";
+        cout << "Invalid phone number. Please enter a 10-digit number: ";
         cin >> num;
-        cout<<"Enter the amount to send: ";
-        cin >> amount;
-        cout<<"enter your Pin:";
-        cin>>momo_pin;
-
-        if (cin.fail()) // Check if the input is a number
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input. Please enter a number." << endl;
-            continue;
-        }
-        if (momo_pin != pin)
-        {
-            cout << "Invalid MoMo PIN. Please try again." << endl;
-            continue;
-        }
-
-        if (amount <= balance)
-        {
-            balance -= amount;
-            cout << "Transaction successful" << endl;
-            cout << "New balance: " << balance << endl;
-        }
-        else
-        {
-            cout << "Insufficient funds" << endl;
-        }
     }
+    cout << "Enter the amount to send: ";
+    cin >> amount;
+    cout << "Enter your Pin:";
+    cin >> momo_pin;
+
+    if (cin.fail()) // Check if the input is a number
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input. Please enter a number." << endl;
+        continue;
+    }
+    if (momo_pin != pin)
+    {
+        cout << "Invalid MoMo PIN. Please try again." << endl;
+        continue;
+    }
+
+    if (amount <= balance)
+    {
+        balance -= amount;
+        cout << "Transaction successful" << endl;
+        cout << "New balance: " << balance << endl;
+    }
+    else
+    {
+        cout << "Insufficient funds" << endl;
+    }
+}
+
+
     else if (choice == 4)
     {
         cout << "Exiting program." << endl;
